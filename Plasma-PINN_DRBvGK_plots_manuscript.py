@@ -3,6 +3,11 @@
 Created on Tue Jul 20 11:40:22 2021
 
 @author: mathewsa
+
+This code is used to produce the plots in the paper; it can only be run after all 100 PINNs have been trained and their outputs each saved
+The outputs correspond to that of `output_model = model.predict(X0,X1,X3)` where X0, X1, X3 need to cover the (x,y,t) domain of interest
+1 PINN can be trained for the low and high beta cases by running Plasma-PINN_DRBvGK_low_beta.py and Plasma-PINN_DRBvGK_high_beta.py, respectively,
+
 """
 
 #EM low beta: 34587378 
@@ -180,7 +185,7 @@ ylim_max = max(X1)[0]#0.02
 
 import numpy as np
 import h5py
-data_file = '/nobackup1/mathewsa/DRBvGK/EM_low_beta.h5'
+data_file = '/nobackup1/mathewsa/DRBvGK/EM_low_beta.h5' #1.4 GB; too large to upload on Github
 h5f = h5py.File(data_file, "r")
 x_array = h5f['x_array'].value 
 y_array = h5f['y_array'].value  
@@ -651,7 +656,7 @@ Te_array_pred = h5f['Te_array_pred'].value
 phi_array_pred = h5f['phi_array_pred'].value 
 Er_array_pred = h5f['Er_array_pred'].value 
 
-relative_path = '/results/NSTX_gyro_v_DRB-highbetahighres_truecollisionfrequency_EM_properv99/'
+relative_path = '/results/NSTX_gyro_v_DRB-highbetahighres_truecollisionfrequency_EM_properv99/' #347 MB; too large to upload on Github
 save_figs_path = '/home/mathewsa/PINNs/main/gdbh'+str(relative_path)
 
 #y-averaged Er vs x comparison
